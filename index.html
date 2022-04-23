@@ -5,12 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Starloader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script type="text/javascript">
         function go() {
             var base = "https://static.smintro.com/production/uploading/recordings/";
             var link = document.getElementById('link').value;
             var params = new URLSearchParams(link);
-            window.location.replace(base + params.get("recordingId") + "/master.mp4"); 
+            var url = base + params.get("recordingId") + "/master.mp4";
+            axios({
+                        url: url,
+                        method: 'GET',
+                        responseType: 'blob'
+                  })
+                        .then((response) => {
+                              const url = window.URL
+                                    .createObjectURL(new Blob([response.data]));
+                              const link = document.createElement('a');
+                              link.href = url;
+                              link.setAttribute('download', 'master.mp4');
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                        })
+            var f = document.createElement("h2");
+            f.innerHTML = "BY AKSHAT - DOWNLOADING.....";
+            document.body.appendChild(f);
         }
     </script>
 </head>
