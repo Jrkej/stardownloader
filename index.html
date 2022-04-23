@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starloader</title>
+    <script type="text/javascript">
+        function go() {
+            var base = "https://static.smintro.com/production/uploading/recordings/";
+            var link = document.getElementById('link').value;
+            var params = new URLSearchParams(link);
+            window.location.replace(base + params.get("recordingId") + "/master.mp4"); 
+        }
+    </script>
+</head>
+<body>
+    <h1>STARDOWNLOADER</h1>
+    <input type="text" placeholder="paste song link here!" id="link">
+    <button onclick="go()">Submit</button>
+</body>
+</html>
