@@ -9,7 +9,7 @@
     <script type="text/javascript">
         function go() {
             var base = "https://static-v7.smintro.com/production/uploading/recordings/";
-            var link = document.getElementById('recordingId').value;
+            var link = document.getElementById('link').value;
             var params = new URLSearchParams(link);
             var url = base + params.get("recordingId") + "/master.mp4";
             axios({
